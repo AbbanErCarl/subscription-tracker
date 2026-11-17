@@ -1,4 +1,5 @@
 import mongoose, { model, Schema, type HydratedDocument, type InferSchemaType } from "mongoose";
+import { CATEGORIES, CURRENCIES, FREQUENCIES, STATUSES } from "./subscription.constants.js";
 
 const subscriptionSchema = new Schema(
   {
@@ -17,19 +18,19 @@ const subscriptionSchema = new Schema(
     currency: {
       type: String,
       required: [true, "Subscription currency is required"],
-      enum: ["USD", "EUR", "GBP", "JPY", "CAD", "AUD"], // Add more currencies as needed
+      enum: CURRENCIES, // Add more currencies as needed
       default: "USD",
     },
     frequency: {
       type: String,
       required: [true, "Subscription frequency is required"],
-      enum: ["daily", "weekly", "monthly", "yearly"],
+      enum: FREQUENCIES,
       default: "monthly",
     },
     category: {
       type: String,
       required: [true, "Subscription category is required"],
-      enum: ["Entertainment", "Productivity", "Education", "Health", "Other"], // Add more categories as needed
+      enum: CATEGORIES, // Add more categories as needed
     },
     paymentMethod: {
       type: String,
@@ -39,7 +40,7 @@ const subscriptionSchema = new Schema(
     status: {
       type: String,
       required: [true, "Subscription status is required"],
-      enum: ["active", "cancelled", "expired"],
+      enum: STATUSES,
       default: "active",
     },
     startDate: {
