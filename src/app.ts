@@ -7,7 +7,6 @@ export default function createApp() {
 
   app.use(express.json({ limit: "10kb" }));
 
-
   // Health check endpoint
   app.get("/", (_req, res) => {
     res.json({ status: "ok" });
