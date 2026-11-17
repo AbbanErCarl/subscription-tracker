@@ -1,3 +1,7 @@
+import createApp from "./app.js";
+
 const port = 5500;
 
-console.log(`Server is running on port ${String(port)}`);
+createApp().listen(port, () => {
+  console.log(`Server is running on this port ${String(port)}`);
+});
