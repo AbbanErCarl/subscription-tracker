@@ -12,6 +12,12 @@ export default defineConfig(
       parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
     },
   },
-  { files: ["**/*.js"], extends: [tseslint.configs.disableTypeChecked] },
+  {
+    files: ["**/*.js", "src/**/*.model.ts"],
+    extends: [tseslint.configs.disableTypeChecked],
+    rules: {
+      "@typescript-eslint/no-unsafe-assignment": "off", // Mongoose's types describe schema options as a class, but its docs and runtime use plain objects
+    },
+  },
   prettier,
 );
