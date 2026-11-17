@@ -1,7 +1,6 @@
 import createApp from "./app.js";
+import { env } from "./config/env.js";
 
-const port = 5500;
-
-createApp().listen(port, () => {
-  console.log(`Server is running on this port ${String(port)}`);
+createApp().listen(env.SERVER_PORT, () => {
+  console.log(`Listening on http://localhost:${String(env.SERVER_PORT)} (${env.NODE_ENV})`);
 });
